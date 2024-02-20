@@ -103,8 +103,12 @@ export function getStaticPaths() {
 <Layout title={String(id)}>
   <!-- PRINCIPAL -->
   <div
+    class=`absolute inset-0 -z-10 h-full w-full bg-white element-${data.vision} `
+  >
+  </div>
+  <div
     class="grid grid-cols-2 max-w-5xl mx-auto"
-    style="min-height: calc(100vh - 72px);"
+    style="min-height: calc(100vh - 56px);"
   >
     <div class="flex flex-col relative py-28 z-10">
       <h2 class="text-7xl font-bold uppercase">
@@ -180,3 +184,58 @@ export function getStaticPaths() {
     </div>
   </div>
 </Layout>
+
+<style>
+  .element-Hydro {
+    background: radial-gradient(
+      circle at 50% -50%,
+      rgb(255, 255, 255, 0.4) 60%,
+      rgb(59 130 246)
+    );
+    /* [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)] */
+    /* radial-gradient(125%_125%_at_50%_10%,#fff,#63e) */
+  }
+  .element-Electro {
+    background: radial-gradient(
+      circle at 50% -140%,
+      rgb(255, 255, 255, 0.4) 70%,
+      #a855f7
+    );
+  }
+  .element-Cryo {
+    background: radial-gradient(
+      circle at 50% -140%,
+      rgb(255, 255, 255, 0.4) 70%,
+      #06b6d4
+    );
+  }
+  .element-Pyro {
+    background: radial-gradient(
+      circle at 50% -140%,
+      rgb(255, 255, 255, 0.4) 70%,
+      #ef4444
+    );
+  }
+  .element-Anemo {
+    background: radial-gradient(
+      circle at 50% -140%,
+      rgb(255, 255, 255, 0.4) 70%,
+      #2dd4bf
+    );
+  }
+  .element-Geo {
+    background: radial-gradient(
+      circle at 50% -140%,
+      rgb(255, 255, 255, 0.4) 70%,
+      #f59e0b
+    );
+  }
+  .element-Dendro {
+    background: radial-gradient(
+      circle at 50% -140%,
+      rgb(255, 255, 255, 0.4) 70%,
+      #22c55e
+    );
+  }
+  
+</style>
