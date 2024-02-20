@@ -1,0 +1,176 @@
+---
+// import { string } from "astro/zod";
+
+interface Props {
+  vision: string;
+  index: number;
+  weapon: string;
+  id: string;
+}
+const { vision } = Astro.props;
+const { index } = Astro.props;
+const { weapon } = Astro.props;
+const { id } = Astro.props;
+
+function verifyWeapon(weapon: string) {
+  const weaponTypes = ["Sword", "Claymore", "Polearm", "Catalyst", "Bow"];
+
+  if (weaponTypes.includes(weapon)) {
+    return `https://rerollcdn.com/GENSHIN/Skill/UI_GachaTypeIcon_${weapon}.png`;
+  }
+}
+function primeraLetraMayuscula(cadena: string) {
+  if (cadena === "arataki-itto") {
+    return "Itto";
+  }
+  if (cadena.includes("-")) {
+    let palabras = cadena.split("-");
+    let palabrasModificadas = palabras.map(
+      (p) => p.charAt(0).toUpperCase() + p.slice(1)
+    );
+    return palabrasModificadas.join("%20");
+  }
+  return cadena.charAt(0).toUpperCase() + cadena.substring(1);
+}
+---
+
+<section class={`${vision.toLocaleLowerCase()}`}>
+  <div class="helper"></div>
+  <div class="circle">
+    <img
+      class="w-full h-full object-cover"
+      src={index === 0
+        ? verifyWeapon(weapon)
+        : `
+          https://rerollcdn.com/GENSHIN/Skill/1/${primeraLetraMayuscula(
+            id
+          )}/talent_${index + 1}.png
+          `}
+      alt=""
+    />
+  </div>
+</section>
+
+<style>
+  section {
+    /* background-color: red; */
+    min-width: 80px;
+    min-height: 80px;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    /* padding: 8px; */
+  }
+  img {
+    z-index: 10;
+    position: relative;
+  }
+  .helper {
+    display: none;
+  }
+  .geo {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+  }
+  .geo .circle {
+    padding: 10px;
+    border-radius: 100%;
+    background-image: linear-gradient(180deg, #fbbf24 10%, #faa423 90%);
+    
+    box-shadow:
+      inset -1px 1px 0px #fef08a86,
+      inset 2px -2px 1px rgb(120, 53, 15,0.4);
+    position: relative;
+  }
+  .geo .helper {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    outline: 1px solid #78350f;
+    /* background-color: #fbbf24; */
+    background-image: radial-gradient(circle, #78350f 46%, #fbbf24 66%);
+    box-shadow: inset 0 0 2px #78350f;
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1.15);
+  }
+  .geo::before{
+    content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 40px;
+    height: 40px;
+    z-index: 20;
+    background-color: rgb(255, 255, 255);
+    /* border-radius: 100%; */
+    /* clip-path: polygon(100% 1%, 0% 100%, 100% 100%); */
+    /* clip-path: polygon(100% 1%, 0% 100%, 0 0); */
+    /* clip-path: polygon(100% 1%, 0% 100%, 25% 23%); */
+    clip-path: polygon(86% 0, 89% 5%, 48% 22%, 29% 37%, 23% 58%, 15% 60%, 18% 46%, 25% 25%, 58% 9%);
+  }
+
+
+  /* !HYDRO */
+  .hydro{
+    background-image: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+    box-shadow: 0 0 8px #1e40af;
+    border: 2px solid #bfdbfe;
+}
+  .hydro .circle{
+    padding: 10px;
+  }
+
+  /* dendro */
+  .dendro{
+    background-image: linear-gradient(0deg, #65a30d 0%, #bef264 100%);
+    outline: 2px solid #65a30d;
+    box-shadow: 0 0 10px #65a30d;
+  }
+  .dendro .circle{
+    padding: 10px;
+  }
+
+  /* ANEMO */
+  .anemo{
+    background-image: radial-gradient(circle, #6ee7b7 0%, #10b981 100%);
+    border: 2px solid #d1fae5;
+    box-shadow: 0 0 10px #10b981 ;
+  }
+  .anemo .circle{
+    padding:10px
+  }
+
+  /*  CRYO*/
+  .cryo{
+    background-image: linear-gradient(180deg, #06b6d4 0%, #67e8f9 100%);
+    box-shadow: 0 0 10px #67e8f9;
+    border: 1px solid #cffafe;
+  }
+  .cryo .circle{
+    padding: 10px;
+  }
+
+  /* PYRO */
+  .pyro{
+    background-image: radial-gradient(circle, #f97316 0%, #dc2626 100%);
+    box-shadow: 0 0 10px #dc2626;
+    outline: 1px solid #eab308;
+  }
+  .pyro .circle{
+    padding: 10px;
+  }
+
+  /* ELECTRO */
+  .electro{
+    background-image: radial-gradient(circle, #7c3aed 0%, #c084fc 100%);
+    box-shadow: 0 0 10px #8b5cf6;
+  }
+  .electro .circle{
+    padding: 10px;
+  }
+</style>

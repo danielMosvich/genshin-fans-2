@@ -1,0 +1,27 @@
+---
+import CircleElement from "./CircleElement.astro";
+
+interface Props {
+  vision: string;
+  index: number;
+  id: string;
+  weapon: string;
+  talent: any;
+  vertical?: boolean;
+}
+const { vision, index, id, weapon, talent, vertical } = Astro.props;
+---
+
+<div class={`p-7 bg-white rounded-xl flex gap-7 shadow-sm ${vertical? "flex-col" : "flex-row"}`}>
+  <div class="flex flex-col items-center gap-3">
+    <CircleElement vision={vision} index={index} id={id} weapon={weapon} />
+    <h3 class="text-center font-semibold whitespace-nowrap">
+      {talent.unlock}
+    </h3>
+  </div>
+
+  <div>
+    <h3 class="font-semibold text-lg">{talent.name}</h3>
+    <p class="">{talent.description}</p>
+  </div>
+</div>

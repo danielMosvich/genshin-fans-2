@@ -1,0 +1,29 @@
+---
+import { type CharactersProps } from "../../types/characters";
+import CardPassives from "./CardPassives.astro";
+interface Props {
+  id: string;
+  data: CharactersProps;
+}
+const { id, data } = Astro.props;
+---
+
+<div>
+  <h2 class="text-2xl font-semibold capitalize">
+    {id} Passives
+  </h2>
+  <div class="grid mt-5 gap-5">
+    {
+      data.passiveTalents.map((pasive, index) => (
+        <CardPassives
+          vision={data.vision}
+          index={index}
+          id={id}
+          name={pasive.name}
+          unlock={pasive.unlock}
+          description={pasive.description}
+        />
+      ))
+    }
+  </div>
+</div>

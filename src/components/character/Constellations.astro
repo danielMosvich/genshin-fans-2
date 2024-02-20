@@ -1,0 +1,29 @@
+---
+import { type CharactersProps } from "../../types/characters";
+import CardConstesllation from "./CardConstesllation.astro";
+interface Props {
+  id: string;
+  data: CharactersProps;
+}
+const { id, data } = Astro.props;
+---
+
+<div>
+  <h2 class="text-2xl font-semibold capitalize">
+    {id} Constellations
+  </h2>
+  <div class="mt-5 grid grid-cols-2 gap-5">
+    {
+      data.constellations.map((constellation, index) => (
+        <CardConstesllation
+          vision={data.vision}
+          index={index}
+          id={id}
+          name={constellation.name}
+          description={constellation.description}
+          level={constellation.level}
+        />
+      ))
+    }
+  </div>
+</div>

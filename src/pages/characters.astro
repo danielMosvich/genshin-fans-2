@@ -1,0 +1,10 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CharactersData from "../components/characters/CharactersData";
+import { getCharacters } from "../services/getCharacters";
+const data = await getCharacters();
+---
+
+<Layout title="characters">
+  <CharactersData client:load data={data} />
+</Layout>

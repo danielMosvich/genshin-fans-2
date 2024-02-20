@@ -1,0 +1,32 @@
+---
+import CardTalents from "./CardTalents.astro";
+import { type CharactersProps } from "../../types/characters";
+
+interface Props {
+  id: string;
+  data: CharactersProps;
+}
+
+const { id, data } = Astro.props;
+---
+
+<div>
+  <h2 class="text-2xl font-semibold capitalize">
+    {id} Talents
+  </h2>
+  <div class="flex flex-col gap-5 mt-5">
+    {
+      data.skillTalents.map((talent, index) => (
+        <div>
+          <CardTalents
+            vision={data.vision}
+            index={index}
+            id={id}
+            weapon={data.weapon}
+            talent={talent}
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>

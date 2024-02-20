@@ -1,0 +1,62 @@
+---
+import NavButton from "./NavButton.astro";
+---
+
+<header
+  class="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl w-full fixed flex gap-10 justify-center z-40"
+>
+  <div class="h-full w-full max-w-5xl mx-auto py-2">
+    <div class="flex justify-between gap-3 items-center">
+      <!-- url -->
+      <a href="/" class="flex gap-3 items-center">
+        <div
+          class="w-10 shadow-sm rounded-lg bg-gradient-to-t from-[#3b82f6] to-[#38bdf8] p-[2px]"
+        >
+          <img src="/logo.svg" alt="xd" />
+        </div>
+        <p class="font-[800] text-xl text-neutral-700">
+          Genshin <label
+            class="bg-gradient-to-t from-[#3b82f6] to-[#38bdf8] bg-clip-text text-transparent capitalize text-center"
+            >Fans</label
+          >
+
+          <!-- <h2 class="text-rose-500 text-5xl font-bold text-center">GIF</h2> -->
+        </p>
+      </a>
+
+      <!-- NAV -->
+      <nav class="flex gap-3 items-center">
+        <NavButton link="/">Home</NavButton>
+        <NavButton link="/characters">Characters</NavButton>
+        <NavButton link="/weapons">Weapons</NavButton>
+      </nav>
+    </div>
+  </div>
+  <!-- <script is:inline></script> -->
+
+  <!-- <style>
+  .toggle-switch {
+    background-color: red;
+    width: 60px;
+    height: 30px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .toggle-buble {
+    position: absolute;
+    left: 5px;
+    background-color: rosybrown;
+    width: 20px;
+    height: 20px;
+    border-radius: 10000px;
+    transition: left 0.3s;
+  }
+
+  .active .toggle-buble {
+    background-color: tomato;
+    left: 35px;
+  }
+</style> -->
+</header>

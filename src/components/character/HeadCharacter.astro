@@ -1,0 +1,61 @@
+---
+import { type CharactersProps } from "../../types/characters";
+// import CardConstesllation from "./CardConstesllation.astro";
+interface Props {
+  id: string;
+  data: CharactersProps;
+}
+const { id, data } = Astro.props;
+function exeptionCharacters(id: string): string {
+  if (id === "navia") {
+    return "/images/portrait/navia.png";
+  }
+  return `https://genshin.jmp.blue/characters/${id}/icon-big`;
+}
+---
+
+<div class="flex gap-10">
+  <div
+    class=`shadow-xl rounded-xl overflow-hidden w-40 max-w-40 max-h-40 h-full ${data.rarity === 5 ? "bg-orange-300" : "bg-purple-300"}`
+  >
+    <img
+      class="object-cover w-full h-full"
+      src={id.includes("traveler")
+        ? "https://genshin.jmp.blue/characters/traveler-anemo/icon-big-aether"
+        : exeptionCharacters(id)}
+      alt=""
+    />
+  </div>
+  <div class="flex flex-col py-5">
+    <h2 class="text-3xl font-semibold">{data.name}</h2>
+    <p class="lowercase">
+      {String(data.rarity)} Stars {data.vision} Character
+    </p>
+    <div class="flex gap-5 mt-5">
+      <div class="ring-1 bg-white ring-neutral-300 py-2 px-3 rounded-md">
+        <h2>
+          weapon :
+          <b class="font-semibold">{data.weapon}</b>
+        </h2>
+      </div>
+      <div class="ring-1 bg-white ring-neutral-300 py-2 px-3 rounded-md">
+        <h2>
+          Gender :
+          <b class="font-semibold">{data.gender}</b>
+        </h2>
+      </div>
+      <div class="ring-1 bg-white ring-neutral-300 py-2 px-3 rounded-md">
+        <h2>
+          Birthday :
+          <b class="font-semibold">{data.birthday}</b>
+        </h2>
+      </div>
+      <div class="ring-1 bg-white ring-neutral-300 py-2 px-3 rounded-md">
+        <h2>
+          Nation :
+          <b class="font-semibold">{data.nation}</b>
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,176 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getWeapons } from "../services/getWeapons.ts";
+let data = await getWeapons();
+console.log(data);
+
+function checkStars(stars: number) {
+  if (stars === 1) {
+    return `<svg
+          class="text-white"
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-star-filled"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <>
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"
+              stroke-width="0"
+              fill="currentColor"
+            />
+          </>
+        </svg>`;
+  }
+  if (stars === 4) {
+    return `<svg
+          class="text-white"
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-star-filled"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <>
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"
+              stroke-width="0"
+              fill="currentColor"
+            />
+          </>
+        </svg>`;
+  }
+}
+---
+
+<Layout title="weapons">
+  <div class="grid max-w-sm md:max-w-2xl mx-auto lg:max-w-5xl">
+    <div
+      class="grid bg-neutral-100 rounded-lg p-5"
+      style="grid-template-columns: 2fr 1fr 1fr 1fr;"
+    >
+      <h2 class="text-center font-semibold text-lg">weapon</h2>
+      <h2 class="text-center font-semibold text-lg">rarity</h2>
+      <h2 class="text-center font-semibold text-lg">base attack</h2>
+      <h2 class="text-center font-semibold text-lg">sub stats</h2>
+    </div>
+
+    <div class="mt-5 rounded-lg overflow-hidden shadow-lg">
+      {
+        data &&
+          data.map((weapon, i) => (
+            <div
+              class=" w-full gap-3 items-center grid list py-5 px-5"
+              style="grid-template-columns: 2fr 1fr 1fr 1fr;"
+            >
+              <div class="flex items-center gap-3">
+                <div
+                  class={`w-14 h-14 min-w-14 min-h-14 max-w-14 max-h-14 overflow-hidden ${
+                    "rarity-" + String(weapon.rarity)
+                  } rounded-lg`}
+                >
+                  <img
+                    class="w-full h-full object-cover"
+                    src={`https://genshin.jmp.blue/weapons/${weapon.imageName}/icon`}
+                    alt=""
+                  />
+                </div>
+                <h2 class="font-semibold whitespace-nowrap text-ellipsis">
+                  {weapon.name}
+                </h2>
+              </div>
+              <div>
+                <div class="text-center flex gap-2 justify-center">
+                  {Array(weapon.rarity)
+                    .fill("")
+                    .map(() => {
+                      return (
+                        <svg
+                          class={"rarity-" + String(weapon.rarity) + "-stars"}
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="icon icon-tabler icon-tabler-star-filled"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <>
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                              d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"
+                              stroke-width="0"
+                              fill="currentColor"
+                            />
+                          </>
+                        </svg>
+                      );
+                    })}
+                </div>
+              </div>
+              <div>
+                <h3 class="text-center">{weapon.baseAttack}</h3>
+              </div>
+              <div>
+                <h3 class="">{weapon.subStat}</h3>
+              </div>
+            </div>
+          ))
+      }
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .list:nth-child(odd) {
+    background-color: rgb(245 245 245);
+  }
+
+  .rarity-1 {
+    background-color: rgb(123, 129, 141);
+  }
+  .rarity-2 {
+    background-color: #85bc8c;
+  }
+  .rarity-3 {
+    background-color: #7ca7cf;
+  }
+  .rarity-4 {
+    background-color: #a685bc;
+  }
+  .rarity-5 {
+    background-color: rgb(255, 138, 84);
+  }
+
+  .rarity-1-stars {
+    color: rgb(123, 129, 141);
+  }
+  .rarity-2-stars {
+    color: #85bc8c;
+  }
+  .rarity-3-stars {
+    color: #7ca7cf;
+  }
+  .rarity-4-stars {
+    color: #a685bc;
+  }
+  .rarity-5-stars {
+    color: rgb(255, 138, 84);
+  }
+</style>

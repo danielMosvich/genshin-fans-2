@@ -1,0 +1,94 @@
+---
+import { getCharacters } from "../../services/getCharacters";
+import CharacterCard from "./CharacterCard.tsx";
+const data = await getCharacters();
+let dataManage = await getCharacters();
+const characters = [
+  "arataki-itto",
+  "hu-tao",
+  "kuki-shinobu",
+  "raiden",
+  "shikanoin-heizou",
+  "yae-miko",
+  "yun-jin",
+];
+const elements = ["anemo", "cryo", "dendro", "electro", "geo", "hydro", "pyro"];
+
+function encontrarCoincidencia(parametro: string) {
+  const coincidencia = characters.find((personaje) =>
+    personaje.includes(parametro)
+  );
+  return coincidencia || parametro;
+}
+
+function obtenerSegundaPalabra(name: string) {
+  if (name === "Raiden Shogun") {
+    return "raiden";
+  }
+  let palabras = name.split(" ");
+
+  if (palabras.length === 2) {
+    return palabras[1].toLocaleLowerCase();
+  } else {
+    return name.toLocaleLowerCase();
+  }
+}
+
+// function handleInput(e){
+
+// }
+---
+
+<div
+  class="mx-auto flex flex-wrap justify-center gap-10 max-w-sm md:max-w-2xl
+  lg:max-w-5xl pb-10"
+>
+  <!-- ? HEADER -->
+  <div
+    class="bg-neutral-100 dark:bg-neutral-800 rounded-lg w-full min-h-10 flex justify-center items-center gap-5 p-5"
+  >
+    <div class="flex">
+      {
+        elements.map((e) => (
+          <img
+            class="w-8 h-8"
+            src={`https://genshin.jmp.blue/elements/${e}/icon`}
+          />
+        ))
+      }
+    </div>
+    <div>
+      <input type="text" id="inputCharacter" name="inputCharacter" />
+    </div>
+  </div>
+  <!--? BODY -->
+  <!-- {
+    data.map((item) => {
+      return <img src={item.name} alt={item.name} />;
+    })
+  } -->
+  <div id="container-characters"></div>
+</div>
+
+<script is:inline>
+  const containerCharacters = document.querySelector("#container-characters");
+  async function getCharacters() {
+    const res = await fetch("https://genshin.jmp.blue/characters/all");
+    const dataAllCharacters = await res.json();
+    console.log(dataAllCharacters)
+  }
+  let filtro = {
+    name: "",
+    vision: "",
+    weapon: "",
+    rarity: " ",
+  };
+  function changeName(value) {
+    filtro.name = value;
+    console.log(filtro);
+  }
+
+  const inputCharacter = document.querySelector("#inputCharacter");
+  inputCharacter.addEventListener("input", (e) => changeName(e.target.value));
+  getCharacters()
+</script>
