@@ -34,12 +34,6 @@ function CharacterCard({ item }: { item: CharactersProps }) {
     }
   }
   function verifyCharacterExist(name: string, vision: string) {
-    if (name === "Navia") {
-      return `../../../images/portrait/${name.toLowerCase()}.png`;
-    }
-    if (name === "Chevreuse") {
-      return `../../../images/portrait/${name.toLowerCase()}.png`;
-    }
     if (name === "Traveler") {
       return `https://genshin.jmp.blue/characters/traveler-${vision.toLowerCase()}/icon-big-aether`;
     }
