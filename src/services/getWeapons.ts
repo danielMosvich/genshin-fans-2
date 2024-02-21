@@ -1,28 +1,37 @@
-import { type WeaponProps } from "../types/weapons.ts";
+import type { WeaponProps } from "../types/weapons.ts";
 
 export async function getWeapons() {
   try {
     const res = await fetch("https://genshin.jmp.blue/weapons/all");
-    const allWeaponsData = (await res.json()) as WeaponProps[];
+    const allWeaponsData = await res.json() as WeaponProps[];
 
     const res2 = await fetch("https://genshin.jmp.blue/weapons/");
-    const allNameWeaponsData = await res2.json();
+    const allNameWeaponsData = await res2.json() as string[];
 
-    if (allWeaponsData.length === allNameWeaponsData.length) {
-      var newArray: WeaponProps[] | undefined = [];
-      for (let i = 0; i < allWeaponsData.length; i++) {
-        let objeto = allWeaponsData[i];
-        let nuevoObjeto = { ...objeto, imageName: allNameWeaponsData[i] };
-        newArray.push(nuevoObjeto);
-      }
-      // console.log(newArray);
+    console.log(allWeaponsData.length, "ALL WEAPONS LONGITUD");
+    console.log(allNameWeaponsData.length, "ALL NAMES LONGITUD");
+
+    if (allWeaponsData.length && allNameWeaponsData.length) {
+      const newArray: WeaponProps[] = [];
+      allWeaponsData.forEach(objeto => {
+        const name = objeto.name.toLowerCase().replace(/\s/g, '-'); // Convertir a minúsculas y reemplazar espacios con guiones
+        const bestMatchIndex = allNameWeaponsData.findIndex(nameData => nameData.toLowerCase().includes(name));
+
+        if (bestMatchIndex !== -1) {
+            const nuevoObjeto = { ...objeto, imageName: allNameWeaponsData[bestMatchIndex] };
+            newArray.push(nuevoObjeto);
+        }
+      });
+
+      // Ordenar newArray por rarity (de mayor a menor)
+      newArray.sort((a, b) => b.rarity - a.rarity);
+
+      // console.log(newArray)
       return newArray;
     } else {
-      console.error("ocurrio un error ^^ lo sentimos.");
+      console.error("Ocurrió un error ^^ Lo sentimos.");
     }
   } catch (error) {
     console.error("Error al obtener los datos:", error);
   }
-  // Puedes retornar newArray si lo necesitas en algún otro lugar de tu aplicación
-  // return newArray;
 }
