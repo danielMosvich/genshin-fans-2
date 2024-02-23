@@ -1,5 +1,8 @@
 ---
 import NavButton from "./NavButton.astro";
+const themes = ["light", "dark"];
+const theme = Astro.cookies.get("theme")?.value;
+// const theme = 'light'
 ---
 
 <header
@@ -30,33 +33,78 @@ import NavButton from "./NavButton.astro";
         <NavButton link="/characters">Characters</NavButton>
         <NavButton link="/weapons">Weapons</NavButton>
       </nav>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <button
+          id="button-light"
+          class={`bg-red-500 ${theme === "dark" && "hidden"}`}>light</button
+        >
+        <button
+          id="button-dark"
+          class={`bg-red-500 ${theme === "light" && "hidden"}`}>dark</button
+        >
+      </div>
     </div>
   </div>
-  <!-- <script is:inline></script> -->
-
-  <!-- <style>
-  .toggle-switch {
-    background-color: red;
-    width: 60px;
-    height: 30px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    position: relative;
-  }
-  .toggle-buble {
-    position: absolute;
-    left: 5px;
-    background-color: rosybrown;
-    width: 20px;
-    height: 20px;
-    border-radius: 10000px;
-    transition: left 0.3s;
-  }
-
-  .active .toggle-buble {
-    background-color: tomato;
-    left: 35px;
-  }
-</style> -->
+  <script is:inline>
+    // type Themes = "light" | "dark" | "system";
+    const themeToggles = document.querySelectorAll(`[name="themeSwitcher"]`);
+    const buttonLight = document.querySelector("#button-light");
+    const buttonDark = document.querySelector("#button-dark");
+    function saveTheme(theme) {
+      const d = new Date();
+      d.setTime(d.getTime() + 365 * 86400000);
+      document.cookie = `theme=${theme};expires=${d.toUTCString()}`;
+    }
+    function changeTheme(theme) {
+      if (theme === "dark") {
+        document.documentElement.classList.add(theme);
+        saveTheme(theme);
+        buttonDark?.classList.remove("hidden");
+        buttonLight?.classList.add("hidden");
+      } else if (theme === "light") {
+        document.documentElement.classList.remove("dark");
+        saveTheme(theme);
+        buttonDark?.classList.add("hidden");
+        buttonLight?.classList.remove("hidden");
+      } else if (theme === "system") {
+        if (
+          window.matchMedia &&
+          window.matchMedia(`(prefers-color-scheme:dark)`).matches
+        ) {
+          saveTheme("dark");
+          buttonDark?.classList.remove("hidden");
+          buttonLight?.classList.add("hidden");
+        } else {
+          saveTheme("light");
+          buttonDark?.classList.add("hidden");
+          buttonLight?.classList.remove("hidden");
+        }
+      }
+    }
+    buttonLight?.addEventListener("click", () => {
+      changeTheme("dark");
+    });
+    buttonDark?.addEventListener("click", () => {
+      changeTheme("light");
+    });
+    window.addEventListener("DOMContentLoaded", () => {
+      const cookies = document.cookie;
+      console.log(cookies)
+      if (cookies) {
+        const match = cookies.match("theme=([^;]+)");
+        console.log(match);
+        let theme = match[1];
+        changeTheme(theme);
+      } else {
+        if (
+          window.matchMedia &&
+          window.matchMedia(`(prefers-color-scheme:dark)`).matches
+        ) {
+          changeTheme("dark");
+        } else {
+          changeTheme("light");
+        }
+      }
+    });
+  </script>
 </header>
