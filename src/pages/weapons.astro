@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { getWeapons } from "../services/getWeapons.ts";
 let data = await getWeapons();
-console.log(data);
+// console.log(data);
 
 function checkStars(stars: number) {
   if (stars === 1) {
