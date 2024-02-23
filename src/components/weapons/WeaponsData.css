@@ -1,0 +1,21 @@
+.bg-5-stars{
+    background:transparent;
+    background-image: linear-gradient(to top, #e0c55d, #f36f3f);
+}
+.bg-4-stars{
+    background:transparent;
+    background-image: linear-gradient(to top, #d2a9dd, #834cb9);
+}
+
+.bg-3-stars{
+    background:transparent;
+    background-image: linear-gradient(to top, #7ca7cf, #2f5f8f);
+}
+.bg-2-stars{
+    background:transparent;
+    background-image: linear-gradient(to top, #85bc8c, #489c53);
+}
+.bg-1-stars{
+    background:transparent;
+    background-image: linear-gradient(to top, #7b818d, #32353a);
+}

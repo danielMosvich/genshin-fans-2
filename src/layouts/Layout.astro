@@ -4,6 +4,7 @@ interface Props {
 }
 import Header from "../components/Header.astro";
 import { ViewTransitions } from "astro:transitions";
+import Footer from '../components/Footer.astro'
 const { title } = Astro.props;
 const theme = Astro.cookies.get("theme")?.value;
 ---
@@ -21,8 +22,9 @@ const theme = Astro.cookies.get("theme")?.value;
   </head>
   <body>
     <Header />
-    <main class="mx-auto pt-14 dark:bg-neutral-900">
+    <main class="mx-auto pt-14">
       <slot />
+      <Footer />
     </main>
     <!--! SLOT is like a Children from React-->
     <style is:global>

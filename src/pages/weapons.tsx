@@ -1,16 +1,63 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getWeapons } from "../services/getWeapons.ts";
-import WeaponsData from "../components/weapons/WeaponsData";
-import type {WeaponProps} from "../types/weapons"
-
-const data = (await getWeapons()) as WeaponProps[];
+let data = await getWeapons();
 // console.log(data);
+
+function checkStars(stars: number) {
+  if (stars === 1) {
+    return `<svg
+          class="text-white"
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-star-filled"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <>
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"
+              stroke-width="0"
+              fill="currentColor"
+            />
+          </>
+        </svg>`;
+  }
+  if (stars === 4) {
+    return `<svg
+          class="text-white"
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-star-filled"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <>
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"
+              stroke-width="0"
+              fill="currentColor"
+            />
+          </>
+        </svg>`;
+  }
+}
 ---
 
 <Layout title="weapons">
-  <WeaponsData data={data} client:load />
-  <!-- <div class="grid max-w-sm md:max-w-2xl mx-auto lg:max-w-5xl">
+  <div class="grid max-w-sm md:max-w-2xl mx-auto lg:max-w-5xl">
     <div
       class="dark:bg-neutral-950 fixed inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]
       dark:bg-[linear-gradient(to_right,#f0f0f012_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f015_1px,transparent_1px)]"
@@ -96,7 +143,7 @@ const data = (await getWeapons()) as WeaponProps[];
           ))
       }
     </div>
-  </div> -->
+  </div>
 </Layout>
 
 <style>
@@ -121,7 +168,7 @@ const data = (await getWeapons()) as WeaponProps[];
   }
 
   .rarity-1-stars {
-    color: rgb(123, 129, 141);
+    color: #7b818d;
   }
   .rarity-2-stars {
     color: #85bc8c;
