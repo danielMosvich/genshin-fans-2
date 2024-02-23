@@ -35,3 +35,12 @@ export async function getWeapons() {
     console.error("Error al obtener los datos:", error);
   }
 }
+export async function getWeaponById(id:string){
+  try {
+    const res = fetch(`https://genshin.jmp.blue/weapons/${id}`)
+    const data = (await res).json()
+    return data
+  } catch (error) {
+    
+  }
+}

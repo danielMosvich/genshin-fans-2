@@ -53,18 +53,18 @@ function WeaponsData({ data }: { data: WeaponProps[] }) {
         {/* </div> */}
 
 
-        <div className="flex flex-wrap gap-8 mt-8">
+        <div className="flex flex-wrap gap-8 my-8">
           {filteredWeapons.map((e, i) => {
             return (
               <div key={i} className="w-24 flex flex-col">
-                <div className={`w-24 h-24 min-w-24 min-h-24 relative bg-${e.rarity}-stars rounded-lg`}>
+                <a href={`/weapon/${e.imageName}`} className={`w-24 h-24 min-w-24 min-h-24 relative bg-${e.rarity}-stars rounded-lg`}>
                   <img
                     className="object-cover w-full h-full "
                     style={{ backgroundPosition: "center center" }}
                     src={`https://genshin.jmp.blue/weapons/${e.imageName}/icon`}
                     alt=""
                   />
-                </div>
+                </a>
                 <p className="dark:text-neutral-200 whitespace-nowrap overflow-hidden text-ellipsis text-sm font-semibold mt-1">{e.name}</p>
               </div>
             );

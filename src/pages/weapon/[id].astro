@@ -1,0 +1,15 @@
+---
+import { getWeaponById } from "../../services/getWeapons";
+import type { WeaponProps } from "../../types/weapons";
+import Layout from "../../layouts/Layout.astro";
+const { id } = Astro.params;
+
+const data = (await getWeaponById(id)) as WeaponProps;
+---
+
+<Layout title={`weapon:${id}`}>
+  {data.name}
+  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, quam, quos
+  illum ut veritatis aspernatur numquam laudantium optio inventore laboriosam commodi?
+  Consequuntur eum dignissimos facere culpa doloribus possimus quaerat est?
+</Layout>
