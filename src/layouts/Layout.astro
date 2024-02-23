@@ -42,16 +42,16 @@ const theme = Astro.cookies.get("theme")?.value;
       }
     </style>
     <script is:inline>
-      const cookies = document.cookie;
-      // console.log("XD")
-      if (!cookies) {
-        if (
-          window.matchMedia &&
-          window.matchMedia(`(prefers-color-scheme:dark)`).matches
-        ) {
-          document.documentElement.classList.add("dark")
-        }
-      }
+      // const cookies = document.cookie;
+      // if (!cookies) {
+      //   console.log("none")
+      //   if (
+      //     window.matchMedia &&
+      //     window.matchMedia(`(prefers-color-scheme:dark)`).matches
+      //   ) {
+      //     document.documentElement.classList.add("dark")
+      //   }
+      // }
     </script>
   </body>
 </html>

@@ -37,16 +37,48 @@ const theme = Astro.cookies.get("theme")?.value;
       <div class="flex flex-wrap gap-4 justify-center">
         <button
           id="button-light"
-          class={`bg-red-500 ${theme === "dark" && "hidden"}`}>light</button
+          class={`button-light bg-red-500 ${theme === "dark" && "hidden"}`}
+          >light</button
         >
         <button
           id="button-dark"
-          class={`bg-red-500 ${theme === "light" && "hidden"}`}>dark</button
+          class={`button-dark bg-red-500 ${theme === "light" && "hidden"}`}
+          >dark</button
         >
       </div>
     </div>
   </div>
   <script is:inline>
+    let initCookkie = document.cookie;
+    if (!initCookkie) {
+      function InitPage() {
+        function saveThemeInit(theme) {
+          const d = new Date();
+          d.setTime(d.getTime() + 365 * 86400000);
+          document.cookie = `theme=${theme};expires=${d.toUTCString()}`;
+        }
+        if (
+          window.matchMedia &&
+          window.matchMedia(`(prefers-color-scheme:dark)`).matches
+        ) {
+          saveThemeInit("dark");
+          let dark = document.querySelector(".button-dark");
+          let light = document.querySelector(".button-light");
+          dark.classList.remove("hidden");
+          light.classList.add("hidden");
+          document.documentElement.classList.add("dark")
+        } else {
+          saveThemeInit("light");
+          let dark = document.querySelector(".button-dark");
+          let light = document.querySelector(".button-light");
+          dark.classList.add("hidden");
+          light.classList.remove("hidden");
+          document.documentElement.classList.remove("dark")
+        }
+      }
+      InitPage();
+    }
+
     document.addEventListener("astro:page-load", () => {
       const buttonLight = document.querySelector("#button-light");
       const buttonDark = document.querySelector("#button-dark");
@@ -89,7 +121,8 @@ const theme = Astro.cookies.get("theme")?.value;
       });
       window.addEventListener("DOMContentLoaded", () => {
         const cookies = document.cookie;
-        console.log("GG");
+
+        // console.log("XD?")
         if (cookies) {
           const match = cookies.match("theme=([^;]+)");
           console.log(match);
