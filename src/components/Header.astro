@@ -12,15 +12,15 @@ const theme = Astro.cookies.get("theme")?.value;
   <div class="h-full w-full max-w-5xl mx-auto py-2">
     <div class="flex justify-between gap-3 items-center">
       <!-- url -->
-      <a href="/" class="flex gap-3 items-center">
+      <a href="/" class="flex gap-3 items-center ">
         <div
-          class="w-10 shadow-sm rounded-lg bg-gradient-to-t from-[#3b82f6] to-[#38bdf8] p-[2px]"
+          class="w-8 shadow-sm rounded-lg bg-gradient-to-t from-[#3b82f6] to-[#38bdf8] p-[2px]"
         >
           <img src="/logo.svg" alt="xd" />
         </div>
-        <p class="font-[800] text-xl text-neutral-700">
+        <p class="font-[800] text-xl text-neutral-700 dark:text-neutral-100 select-none ">
           Genshin <label
-            class="bg-gradient-to-t from-[#3b82f6] to-[#38bdf8] bg-clip-text text-transparent capitalize text-center"
+            class="bg-gradient-to-t from-[#3b82f6] to-[#38bdf8] bg-clip-text text-transparent capitalize text-center cursor-pointer"
             >Fans</label
           >
 
@@ -37,13 +37,33 @@ const theme = Astro.cookies.get("theme")?.value;
       <div class="flex flex-wrap gap-4 justify-center">
         <button
           id="button-light"
-          class={`button-light bg-red-500 ${theme === "dark" && "hidden"}`}
-          >light</button
+          class={`button-light flex items-center px-3 py-1 rounded-md gap-2 capitalize text-sm font-semibold bg-neutral-100 ring-1 ring-neutral-300 text-neutral-700 ${theme === "dark" && "hidden"}`}
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1rem"
+            height="1rem"
+            viewBox="0 0 24 24"
+            ><path
+              fill="currentColor"
+              d="M6.993 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007S14.761 6.993 12 6.993S6.993 9.239 6.993 12M12 8.993c1.658 0 3.007 1.349 3.007 3.007S13.658 15.007 12 15.007S8.993 13.658 8.993 12S10.342 8.993 12 8.993M10.998 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2h-3zm17 0h3v2h-3zM4.219 18.363l2.12-2.122l1.415 1.414l-2.12 2.122zM16.24 6.344l2.122-2.122l1.414 1.414l-2.122 2.122zM6.342 7.759L4.22 5.637l1.415-1.414l2.12 2.122zm13.434 10.605l-1.414 1.414l-2.122-2.122l1.414-1.414z"
+            ></path></svg
+          >
+          <label>light</label></button
         >
         <button
           id="button-dark"
-          class={`button-dark bg-red-500 ${theme === "light" && "hidden"}`}
-          >dark</button
+          class={`button-dark flex items-center px-3 py-1 rounded-md gap-2 capitalize text-sm font-semibold bg-black/30 ring-1 ring-neutral-400 text-neutral-200 ${theme === "light" && "hidden"}`}
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1rem"
+            height="1rem"
+            viewBox="0 0 24 24"
+            ><path
+              fill="currentColor"
+              d="M20.742 13.045a8.088 8.088 0 0 1-2.077.271c-2.135 0-4.14-.83-5.646-2.336a8.025 8.025 0 0 1-2.064-7.723A1 1 0 0 0 9.73 2.034a10.014 10.014 0 0 0-4.489 2.582c-3.898 3.898-3.898 10.243 0 14.143a9.937 9.937 0 0 0 7.072 2.93a9.93 9.93 0 0 0 7.07-2.929a10.007 10.007 0 0 0 2.583-4.491a1.001 1.001 0 0 0-1.224-1.224m-2.772 4.301a7.947 7.947 0 0 1-5.656 2.343a7.953 7.953 0 0 1-5.658-2.344c-3.118-3.119-3.118-8.195 0-11.314a7.923 7.923 0 0 1 2.06-1.483a10.027 10.027 0 0 0 2.89 7.848a9.972 9.972 0 0 0 7.848 2.891a8.036 8.036 0 0 1-1.484 2.059"
+            ></path></svg
+          >
+          <label>Dark</label></button
         >
       </div>
     </div>
@@ -66,14 +86,14 @@ const theme = Astro.cookies.get("theme")?.value;
           let light = document.querySelector(".button-light");
           dark.classList.remove("hidden");
           light.classList.add("hidden");
-          document.documentElement.classList.add("dark")
+          document.documentElement.classList.add("dark");
         } else {
           saveThemeInit("light");
           let dark = document.querySelector(".button-dark");
           let light = document.querySelector(".button-light");
           dark.classList.add("hidden");
           light.classList.remove("hidden");
-          document.documentElement.classList.remove("dark")
+          document.documentElement.classList.remove("dark");
         }
       }
       InitPage();

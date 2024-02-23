@@ -16,8 +16,13 @@ import Layout from "../layouts/Layout.astro";
           width="22.5"
           height="22.5"
           patternTransform="scale(5) rotate(0)"
-          ><rect x="0" y="0" width="100%" height="100%" fill="hsla(0,0%,100%,1)"
-          ></rect><path
+          ><rect
+            class="fill-white dark:fill-neutral-950"
+            x="0"
+            y="0"
+            width="100%"
+            height="100%"></rect><path
+            class="dark:stroke-neutral-50/10"
             d="M 10,-2.55e-7 V 20 Z M -1.1677362e-8,10 H 20 Z"
             transform="translate(1.25,0)"
             stroke-width="0.2"
@@ -31,13 +36,16 @@ import Layout from "../layouts/Layout.astro";
         fill="url(#a)"></rect></svg
     >
   </div>
+
   <div
     style="min-height: calc(100vh - 80px);"
     class="flex flex-col gap-14 max-w-sm md:max-w-2xl mx-auto lg:max-w-5xl pt-20 relative"
   >
     <div class="h-fit">
       <div></div>
-      <h2 class="font-bold text-8xl flex flex-col items-center">
+      <h2
+        class="font-bold text-8xl flex flex-col items-center dark:text-neutral-50"
+      >
         Genshin Impact <p
           class="bg-gradient-to-t from-[#3b82f6] to-[#38bdf8] bg-clip-text text-8xl text-transparent capitalize text-center h-[120px]"
         >
@@ -45,7 +53,7 @@ import Layout from "../layouts/Layout.astro";
         </p>
       </h2>
       <p
-        class="text-xl font-semibold text-neutral-700 max-w-lg text-center mx-auto mt-5"
+        class="text-xl font-semibold text-neutral-700 max-w-lg text-center mx-auto mt-5 dark:text-neutral-400"
       >
         Descubre los personajes y armas que Genshin impact trae para ti, con el
         estilo que los caracteriza
@@ -55,10 +63,12 @@ import Layout from "../layouts/Layout.astro";
     <div class="grid grid-cols-2 gap-5 h-fit">
       <a
         href="/characters"
-        class="p-2 border-2 border-neutral-100 rounded-xl bg-gradient-to-b from-neutral-50 to-white hover:border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all shadow-lg shadow-neutral-100"
+        class="p-2 border-2 border-neutral-100 rounded-xl bg-gradient-to-b from-neutral-50 to-white hover:border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all shadow-lg shadow-neutral-100
+        dark:border-neutral-700 dark:shadow-none dark:to-neutral-900 dark:from-neutral-900"
       >
         <div
-          class="w-full h-full rounded-xl flex flex-col overflow-hidden relative cursor-pointer p-5 bg-white hover:bg-gradient-to-b hover:from-white hover:to-neutral-100/80"
+          class="w-full h-full rounded-xl flex flex-col overflow-hidden relative cursor-pointer p-5 bg-white hover:bg-gradient-to-b hover:from-white hover:to-neutral-100/80
+          dark:bg-gradient-to-b dark:from-neutral-800 dark:to-neutral-900 dark:hover:from-neutral-800 dark:hover:to-neutral-950"
         >
           <div class="relative text-blue-500">
             <svg
@@ -79,10 +89,12 @@ import Layout from "../layouts/Layout.astro";
                 d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path></svg
             >
           </div>
-          <h2 class="font-semibold text-xl tracking-tight mt-2">
+          <h2
+            class="font-semibold text-xl tracking-tight mt-2 dark:text-neutral-100"
+          >
             Characters Gallery
           </h2>
-          <p class="w-full text-neutral-600 text-sm mt-2">
+          <p class="w-full text-neutral-600 text-sm mt-2 dark:text-neutral-400">
             Aquí encontrarás una guía detallada de los personajes, incluyendo
             sus descripciones y habilidades, todo presentado de manera
             simplificada para que puedas dominar tu juego favorito fácilmente.
@@ -91,10 +103,12 @@ import Layout from "../layouts/Layout.astro";
       >
       <a
         href="/weapons"
-        class="p-2 border-2 border-neutral-100 rounded-xl bg-gradient-to-b from-neutral-50 to-white hover:border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all shadow-lg shadow-neutral-100"
+        class="p-2 border-2 border-neutral-100 rounded-xl bg-gradient-to-b from-neutral-50 to-white hover:border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all shadow-lg shadow-neutral-100
+        dark:border-neutral-700 dark:shadow-none dark:to-neutral-900 dark:from-neutral-900"
       >
         <div
-          class="w-full h-full rounded-xl flex flex-col overflow-hidden relative cursor-pointer p-5 bg-white hover:bg-gradient-to-b hover:from-white hover:to-neutral-100/80"
+          class="w-full h-full rounded-xl flex flex-col overflow-hidden relative cursor-pointer p-5 bg-white hover:bg-gradient-to-b hover:from-white hover:to-neutral-100/80
+          dark:bg-gradient-to-b dark:from-neutral-800 dark:to-neutral-900 dark:hover:from-neutral-800 dark:hover:to-neutral-950"
         >
           <div class="relative text-blue-500">
             <svg
@@ -115,10 +129,10 @@ import Layout from "../layouts/Layout.astro";
                 d="M10 5.5l-2 -2.5h-5v5l3 2.5"></path></svg
             >
           </div>
-          <h2 class="font-semibold text-xl tracking-tight mt-2">
+          <h2 class="font-semibold text-xl tracking-tight mt-2 dark:text-neutral-100">
             Weapons Gallery
           </h2>
-          <p class="w-full text-neutral-600 text-sm mt-2">
+          <p class="w-full text-neutral-600 text-sm mt-2 dark:text-neutral-400">
             Encuentra una guía detallada de las armas de tus personajes
             favoritos, con sus descripciones y daño
           </p>
@@ -128,7 +142,7 @@ import Layout from "../layouts/Layout.astro";
   </div>
 
   <div
-    class="p-10 ring-1 ring-neutral-200 z-20 w-full mt-5 relative overflow-hidden flex justify-center"
+    class="p-10 ring-1 ring-neutral-200 z-20 w-full mt-5 relative overflow-hidden flex justify-center bg-white dark:bg-neutral-900"
   >
     <div class="flex flex-col justify-center w-fit relative z-10">
       <div class="flex flex-col items-center">
@@ -146,7 +160,11 @@ import Layout from "../layouts/Layout.astro";
         </p>
       </div>
       <div class="flex gap-3 mt-2 items-center justify-center">
-        <a class="hover:scale-110" href="https://twitter.com/danielmosvich" target="_blank">
+        <a
+          class="hover:scale-110"
+          href="https://twitter.com/danielmosvich"
+          target="_blank"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="icon icon-tabler icon-tabler-brand-x"
@@ -163,7 +181,11 @@ import Layout from "../layouts/Layout.astro";
               d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg
           >
         </a>
-        <a class="hover:scale-110" href="https://github.com/danielMosvich" target="_blank">
+        <a
+          class="hover:scale-110"
+          href="https://github.com/danielMosvich"
+          target="_blank"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="icon icon-tabler icon-tabler-brand-github-filled"
@@ -181,7 +203,11 @@ import Layout from "../layouts/Layout.astro";
               fill="currentColor"></path></svg
           >
         </a>
-        <a class="hover:scale-110" href="https://github.com/danielMosvich" target="_blank">
+        <a
+          class="hover:scale-110"
+          href="https://github.com/danielMosvich"
+          target="_blank"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="icon icon-tabler icon-tabler-brand-linkedin"
