@@ -1,0 +1,3 @@
+.grid-characters{
+    grid-template-columns:repeat(auto-fill, minmax(6rem, 1fr)) ;
+}

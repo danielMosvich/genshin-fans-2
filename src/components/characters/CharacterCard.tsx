@@ -51,7 +51,7 @@ function CharacterCard({ item }: { item: CharactersProps }) {
         )}`}
       >
         <div
-          className={`w-24 h-24 min-w-24 min-h-24  rounded-lg overflow-hidden ${
+          className={`w-full h-24 min-h-24  rounded-lg overflow-hidden ${
             item.rarity === 5
               ? "bg-gradient-to-b from-orange-400 to-amber-200"
               : "bg-gradient-to-b from-purple-400 to-fuchsia-200"

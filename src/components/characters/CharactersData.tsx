@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CharacterCard from "./CharacterCard";
+import "./CharactersData.css"
 import type { CharactersProps } from "../../types/characters";
 
 function CharacterData({ data }: { data: CharactersProps[] }) {
@@ -65,15 +66,15 @@ function CharacterData({ data }: { data: CharactersProps[] }) {
   const filteredPersonajes: CharactersProps[] = filtrarPersonajes();
   return (
     <div
-      className=" mx-auto flex flex-wrap justify-center items-start gap-10  max-w-sm md:max-w-2xl
-      lg:max-w-5xl pb-10"
-      style={{minHeight:"calc(100vh - 56px)"}}
+      className=" mx-auto flex flex-wrap justify-center items-start gap-10 sm:px-0  max-w-sm md:max-w-2xl lg:max-w-4xl
+      xl:max-w-5xl pb-10"
+      style={{ minHeight: "calc(100vh - 56px)" }}
     >
       <div className="rounded-lg flex flex-col justify-center items-center gap-5 w-full mt-5">
-        <section className="bg-white/80 dark:bg-neutral-950/70 dark:shadow-none backdrop-blur-md shadow-xl shadow-neutral-300/50 rounded-lg px-5 py-3 flex gap-5 items-center justify-between w-full">
-          <div className="flex gap-5 w-fit">
+        <section className="bg-white/80 dark:bg-neutral-950/70 dark:shadow-none backdrop-blur-md shadow-xl shadow-neutral-300/50 rounded-lg lg:px-5 lg:py-3 flex gap-5 items-center justify-between w-full flex-col lg:flex-row p-2">
+          <div className="flex flex-col lg:flex-row gap-5 w-fit">
             {/* BY VISION */}
-            <div className="flex gap-3">
+            <div className="flex gap-3 justify-center">
               {elements.map((e: string, i) => (
                 <button
                   className={`p-1 w-10 h-10 min-w10 min-h-10 ${
@@ -92,9 +93,9 @@ function CharacterData({ data }: { data: CharactersProps[] }) {
                 </button>
               ))}
             </div>
-            <span className="w-[1.5px] bg-neutral-400"></span>
+            <span className="w-[1.5px] bg-neutral-400 hidden lg:visible"></span>
             {/* BY WEAPON */}
-            <div className="flex">
+            <div className="flex justify-center">
               {weapons.map((e: string, i) => (
                 <button
                   className={`p-1 w-10 h-10 min-w10 min-h-10 ${
@@ -132,23 +133,20 @@ function CharacterData({ data }: { data: CharactersProps[] }) {
         </section>
 
         {/* CHARACTERS */}
-        <section className="flex flex-wrap gap-8 mt-3">
+        <section className="grid grid-characters justify-items-center gap-8 mt-3 w-full px-4 md:px-0">
           {filteredPersonajes.map((e, i) => {
-            return (
-              <div key={i}>
-                <CharacterCard item={e} />
-              </div>
-            );
+            return <CharacterCard key={i} item={e} />;
           })}
         </section>
       </div>
 
-
-
-      <div className=" dark:bg-neutral-950 fixed inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]
+      {/* BACKGROUND */}
+      <div
+        className=" dark:bg-neutral-950 fixed inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]
       dark:bg-[linear-gradient(to_right,#f0f0f012_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f015_1px,transparent_1px)]
-      ">
-        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_1000px_at_50%_200px,#c1c7ff88,transparent)] dark:bg-[radial-gradient(circle_1000px_at_50%_200px,#20244f9d,transparent)]" ></div>
+      "
+      >
+        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_1000px_at_50%_200px,#c1c7ff88,transparent)] dark:bg-[radial-gradient(circle_1000px_at_50%_200px,#20244f9d,transparent)]"></div>
       </div>
     </div>
   );

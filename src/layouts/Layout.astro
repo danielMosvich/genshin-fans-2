@@ -3,8 +3,8 @@ interface Props {
   title: string;
 }
 import Header from "../components/Header.astro";
-import { ViewTransitions } from "astro:transitions";
-import Footer from '../components/Footer.astro'
+// import { ViewTransitions } from "astro:transitions";
+import Footer from "../components/Footer.astro";
 const { title } = Astro.props;
 const theme = Astro.cookies.get("theme")?.value;
 ---
@@ -18,7 +18,7 @@ const theme = Astro.cookies.get("theme")?.value;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions />
+    <!-- <ViewTransitions /> -->
   </head>
   <body>
     <Header />
@@ -39,8 +39,15 @@ const theme = Astro.cookies.get("theme")?.value;
           white 60%
         );
       }
+      
+      @media (prefers-color-scheme: dark) {
+        html{
+          background-color: black;
+        }
+      }
       html {
         scrollbar-gutter: stable;
+        background-color: white;
       }
     </style>
     <script is:inline>

@@ -38,44 +38,42 @@ import Layout from "../layouts/Layout.astro";
   </div>
 
   <div
-    style="min-height: calc(100vh - 56px);"
-    class="flex flex-col gap-14 max-w-sm md:max-w-2xl mx-auto lg:max-w-5xl pt-20 relative"
+    style="min-height: calc(100vh - 56px) "
+    class="flex flex-col gap-14 px-5 lg:px-32 xl:px-0 md:px-0 md:max-w-2xl mx-auto lg:max-w-5xl pt-20 relative"
   >
     <div class="h-fit">
       <div></div>
       <h2
-        class="font-bold text-8xl flex flex-col items-center dark:text-neutral-50"
+        class="font-bold xl:text-8xl text-center text-nowrap sm:text-6xl text-4xl flex flex-col items-center dark:text-neutral-50"
       >
         Genshin Impact <p
-          class="bg-gradient-to-t from-[#3b82f6] to-[#38bdf8] bg-clip-text text-8xl text-transparent capitalize text-center h-[120px]"
+          class="bg-gradient-to-t from-[#3b82f6] to-[#38bdf8] bg-clip-text xl:text-8xl sm:text-6xl text-4xl text-transparent capitalize text-center xl:h-[120px] sm:h-[90px] h-[50px]"
         >
           fans Page
         </p>
       </h2>
       <p
-        class="text-xl font-semibold text-neutral-700 max-w-lg text-center mx-auto mt-5 dark:text-neutral-400"
+        class="xl:text-xl sm:text-md sm:px-0 px-10 text-sm font-semibold text-neutral-700 max-w-lg text-center mx-auto xl:mt-5 dark:text-neutral-300"
       >
         Descubre los personajes y armas que Genshin impact trae para ti, con el
         estilo que los caracteriza
       </p>
     </div>
 
-    <div class="grid grid-cols-2 gap-5 h-fit">
+    <div class="grid md:grid-cols-2 gap-5 h-fit ">
       <a
         href="/characters"
         class="p-2 border-2 border-neutral-100 rounded-xl bg-gradient-to-b from-neutral-50 to-white hover:border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all shadow-lg shadow-neutral-100
         dark:border-neutral-700 dark:shadow-none dark:to-neutral-900 dark:from-neutral-900"
       >
         <div
-          class="w-full h-full rounded-xl flex flex-col overflow-hidden relative cursor-pointer p-5 bg-white hover:bg-gradient-to-b hover:from-white hover:to-neutral-100/80
+          class="w-full h-full rounded-xl flex flex-col overflow-hidden relative cursor-pointer sm:p-5 p-2 bg-white hover:bg-gradient-to-b hover:from-white hover:to-neutral-100/80
           dark:bg-gradient-to-b dark:from-neutral-800 dark:to-neutral-900 dark:hover:from-neutral-800 dark:hover:to-neutral-950"
         >
           <div class="relative text-blue-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-users"
-              width="70"
-              height="70"
+              class="icon icon-tabler icon-tabler-users w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] xl:w-[70px] xl:h-[70px]"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
@@ -90,7 +88,7 @@ import Layout from "../layouts/Layout.astro";
             >
           </div>
           <h2
-            class="font-semibold text-xl tracking-tight mt-2 dark:text-neutral-100"
+            class="font-semibold md:text-xl tracking-tight mt-2 dark:text-neutral-100"
           >
             Characters Gallery
           </h2>
@@ -107,15 +105,13 @@ import Layout from "../layouts/Layout.astro";
         dark:border-neutral-700 dark:shadow-none dark:to-neutral-900 dark:from-neutral-900"
       >
         <div
-          class="w-full h-full rounded-xl flex flex-col overflow-hidden relative cursor-pointer p-5 bg-white hover:bg-gradient-to-b hover:from-white hover:to-neutral-100/80
+          class="w-full h-full rounded-xl flex flex-col overflow-hidden relative cursor-pointer sm:p-5 p-2 bg-white hover:bg-gradient-to-b hover:from-white hover:to-neutral-100/80
           dark:bg-gradient-to-b dark:from-neutral-800 dark:to-neutral-900 dark:hover:from-neutral-800 dark:hover:to-neutral-950"
         >
           <div class="relative text-blue-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-swords"
-              width="70"
-              height="70"
+              class="icon icon-tabler icon-tabler-swords w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] xl:w-[70px] xl:h-[70px]"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
@@ -130,7 +126,7 @@ import Layout from "../layouts/Layout.astro";
             >
           </div>
           <h2
-            class="font-semibold text-xl tracking-tight mt-2 dark:text-neutral-100"
+            class="font-semibold md:text-xl tracking-tight mt-2 dark:text-neutral-100"
           >
             Weapons Gallery
           </h2>
