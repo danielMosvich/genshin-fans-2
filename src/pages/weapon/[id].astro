@@ -3,13 +3,113 @@ import { getWeaponById } from "../../services/getWeapons";
 import type { WeaponProps } from "../../types/weapons";
 import Layout from "../../layouts/Layout.astro";
 const { id } = Astro.params;
-
-const data = (await getWeaponById(id)) as WeaponProps;
+const data = (await getWeaponById(String(id))) as WeaponProps;
 ---
 
-<Layout title={`weapon:${id}`}>
-  {data.name}
-  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, quam, quos
-  illum ut veritatis aspernatur numquam laudantium optio inventore laboriosam commodi?
-  Consequuntur eum dignissimos facere culpa doloribus possimus quaerat est?
+<Layout title={`${id}`}>
+  <div
+    class="dark:bg-neutral-950 fixed inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]
+  dark:bg-[linear-gradient(to_right,#f0f0f012_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f015_1px,transparent_1px)]"
+  >
+    <div
+      class="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_1000px_at_50%_200px,#c1c7ff88,transparent)] dark:bg-[radial-gradient(circle_1000px_at_50%_200px,#20244f9d,transparent)]"
+    >
+    </div>
+  </div>
+  <section
+    class=" w-full max-w-5xl mx-auto py-10"
+    style="min-height: calc(100vh - 56px);"
+  >
+    <div class="flex gap-5 items-center">
+      <div class={`bg-${data.rarity}-stars w-40 rounded-lg`}>
+        <img
+          class="w-full h-full object-cover"
+          src={`https://genshin.jmp.blue/weapons/${id}/icon`}
+          alt={id}
+        />
+      </div>
+      <div class="flex flex-col">
+        <h2 class="text-3xl font-semibold dark:text-neutral-100">{data.name}</h2>
+        <p class="dark:text-neutral-300">{String(data.rarity)} stars weapon</p>
+        <div class="mt-5 flex gap-5">
+          <div
+            class="ring-1 bg-white ring-neutral-300 dark:bg-neutral-950/80 dark:ring-neutral-600 dark:text-neutral-100 py-2 px-3 rounded-md w-fit"
+          >
+            <h2 class="flex items-center gap-1">
+              baseAttack :
+              <b class="font-semibold">{data.baseAttack}</b>
+              <svg
+                class=""
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+                ><path
+                  fill="currentColor"
+                  d="M12.832 21.801c3.126-.626 7.168-2.875 7.168-8.69c0-5.291-3.873-8.815-6.658-10.434c-.619-.36-1.342.113-1.342.828v1.828c0 1.442-.606 4.074-2.29 5.169c-.86.559-1.79-.278-1.894-1.298l-.086-.838c-.1-.974-1.092-1.565-1.87-.971C4.461 8.46 3 10.33 3 13.11C3 20.221 8.289 22 10.933 22c.154 0 .316-.006.484-.015C10.111 21.874 8 21.064 8 18.444c0-2.05 1.495-3.435 2.631-4.11c.306-.18.663.055.663.41v.59c0 .45.175 1.155.59 1.637c.47.546 1.159-.026 1.214-.744c.018-.226.246-.37.442-.256c.641.375 1.46 1.175 1.46 2.473c0 2.048-1.129 2.99-2.168 3.357"
+                ></path></svg
+              >
+            </h2>
+          </div>
+
+          <div
+            class="ring-1 bg-white ring-neutral-300 dark:bg-neutral-950/80 dark:ring-neutral-600 dark:text-neutral-100 py-2 px-3 rounded-md w-fit"
+          >
+            <h2 class="flex items-center gap-1">
+              location :
+              <b class="font-semibold">{data.location}</b>
+            </h2>
+          </div>
+
+
+          <div
+            class="ring-1 bg-white ring-neutral-300 dark:bg-neutral-950/80 dark:ring-neutral-600 dark:text-neutral-100 py-2 px-3 rounded-md w-fit"
+          >
+            <h2 class="flex items-center gap-1">
+              sub stat :
+              <b class="font-semibold">{data.subStat}</b>
+            </h2>
+          </div>
+
+          <div
+            class="ring-1 bg-white ring-neutral-300 dark:bg-neutral-950/80 dark:ring-neutral-600 dark:text-neutral-100 py-2 px-3 rounded-md w-fit"
+          >
+            <h2 class="flex items-center gap-1">
+              type :
+              <b class="font-semibold">{data.type}</b>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 bg-white/50 dark:bg-neutral-950/50 p-5 rounded-lg">
+        <h2 class="dark:text-neutral-100 text-lg">Material Asc : <b>{data.ascensionMaterial}</b></h2>
+        <h2 class="dark:text-neutral-100 text-lg">Pasive : <b>{data.passiveName}</b></h2>
+        <p class="dark:text-neutral-400 text-lg">{data.passiveDesc}</p>
+    </div>
+  </section>
 </Layout>
+<style>
+  .bg-5-stars {
+    background: transparent;
+    background-image: linear-gradient(to top, #e0c55d, #f36f3f);
+  }
+  .bg-4-stars {
+    background: transparent;
+    background-image: linear-gradient(to top, #d2a9dd, #834cb9);
+  }
+
+  .bg-3-stars {
+    background: transparent;
+    background-image: linear-gradient(to top, #7ca7cf, #2f5f8f);
+  }
+  .bg-2-stars {
+    background: transparent;
+    background-image: linear-gradient(to top, #85bc8c, #489c53);
+  }
+  .bg-1-stars {
+    background: transparent;
+    background-image: linear-gradient(to top, #7b818d, #32353a);
+  }
+</style>
