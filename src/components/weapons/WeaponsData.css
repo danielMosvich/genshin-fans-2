@@ -19,3 +19,6 @@
     background:transparent;
     background-image: linear-gradient(to top, #7b818d, #32353a);
 }
+.grid-characters{
+    grid-template-columns:repeat(auto-fill, minmax(6rem, 1fr)) ;
+}

@@ -12,16 +12,20 @@ interface Props {
 const { vision, index, id, weapon, talent, vertical } = Astro.props;
 ---
 
-<div class={`p-7 bg-white rounded-xl flex gap-7 shadow-sm ${vertical? "flex-col" : "flex-row"} dark:bg-neutral-950/50`}>
+<div
+  class={`p-7 bg-white rounded-xl flex gap-7 shadow-sm md:flex-row flex-col ${vertical ? "flex-col" : "flex-row"} dark:bg-neutral-950/50`}
+>
   <div class="flex flex-col items-center gap-3">
     <CircleElement vision={vision} index={index} id={id} weapon={weapon} />
-    <h3 class="text-center font-semibold whitespace-nowrap dark:text-neutral-200">
+    <h3
+      class="text-center font-semibold whitespace-nowrap dark:text-neutral-200"
+    >
       {talent.unlock}
     </h3>
   </div>
 
   <div>
-    <h3 class="font-semibold text-lg dark:text-neutral-200">{talent.name}</h3>
-    <p class="dark:text-neutral-400 text-neutral-600">{talent.description}</p>
+    <h3 class="font-semibold md:text-lg  dark:text-neutral-200">{talent.name}</h3>
+    <p class="dark:text-neutral-400 text-neutral-600 text-sm md:text-base">{talent.description}</p>
   </div>
 </div>

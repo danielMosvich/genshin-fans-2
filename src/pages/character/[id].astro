@@ -107,52 +107,54 @@ export function getStaticPaths() {
   <div class=`absolute inset-0 -z-10 h-full w-full element-${data.vision}`>
   </div>
 
-  <div
-    class="grid grid-cols-2 max-w-5xl mx-auto"
-    style="min-height: calc(100vh - 56px);"
-  >
-    <div class="flex flex-col relative py-28 z-10">
-      <h2 class="text-7xl font-bold uppercase dark:text-white">
-        {id.includes("traveler") ? id : data.name}
-      </h2>
+  <section class="w-full overflow-hidden hidden md:flex">
+    <div
+      class="grid grid-cols-2 grid-rows-1 xl:max-w-5xl md:max-w-2xl lg:max-w-3xl w-full mx-auto"
+      style="min-height: calc(100vh - 56px); height: calc(100vh - 56px);"
+    >
+      <div class="flex flex-col relative py-28 z-10">
+        <h2 class="text-7xl font-bold uppercase dark:text-white">
+          {id.includes("traveler") ? id : data.name}
+        </h2>
 
-      <h3
-        class="text-3xl font-semibold uppercase translate-x-2 text-neutral-700 dark:text-neutral-300"
-      >
-        {data.title}
-      </h3>
-      <div>
-        <VisionCard
-          vision={data.vision_key.toLocaleLowerCase()}
-          rarity={data.rarity}
-          description={data.description}
+        <h3
+          class="text-3xl font-semibold uppercase translate-x-2 text-neutral-700 dark:text-neutral-300"
+        >
+          {data.title}
+        </h3>
+        <div>
+          <VisionCard
+            vision={data.vision_key.toLocaleLowerCase()}
+            rarity={data.rarity}
+            description={data.description}
+          />
+        </div>
+        {
+          data.description && (
+            <p class="text-xl mt-5 font-[460] drop-shadow-md bg-black/60 text-white p-5">
+              {data.description}
+            </p>
+          )
+        }
+      </div>
+      <div class="flex justify-center">
+        <img
+          class="h-full object-cover aspect-video max-w-fit"
+          src={id.includes("traveler")
+            ? "https://genshin.jmp.blue/characters/traveler-anemo/portrait"
+            : `https://res.cloudinary.com/dnr4oeapp/image/upload/genshin-splashs/${id.toLocaleLowerCase()}.png`}
+          alt=""
         />
       </div>
-      {
-        data.description && (
-          <p class="text-xl mt-5 font-[460] drop-shadow-md bg-black/60 text-white p-5">
-            {data.description}
-          </p>
-        )
-      }
     </div>
-    <div class="w-full flex justify-center relative">
-      <img
-        class="h-full object-cover absolute overflow-visible"
-        src={id.includes("traveler")
-          ? "https://genshin.jmp.blue/characters/traveler-anemo/portrait"
-          : `https://res.cloudinary.com/dnr4oeapp/image/upload/genshin-splashs/${id.toLocaleLowerCase()}.png`}
-        alt=""
-      />
-    </div>
-  </div>
+  </section>
   <!--! separator SVG WAVE -->
   <div
     style="overflow: hidden;"
-    class="-translate-y-[100px] w-screen absolute right-0"
+    class="-translate-y-[100px] w-screen absolute right-0 hidden md:flex"
   >
     <svg
-    class="fill-neutral-100 dark:fill-neutral-900"
+      class="fill-neutral-100 dark:fill-neutral-900"
       preserveAspectRatio="none"
       viewBox="0 0 1200 120"
       xmlns="http://www.w3.org/2000/svg"
@@ -170,7 +172,7 @@ export function getStaticPaths() {
     </svg>
   </div>
   <!--! more information -->
-  <div class="bg-neutral-100 dark:bg-neutral-900 py-14">
+  <div class="bg-neutral-100 dark:bg-neutral-900 md:y-14 p-5">
     <div class="grid grid-cols-1 gap-14 max-w-5xl mx-auto">
       <!--* BASIC INFORMATION -->
       <HeadCharacter id={id} data={data} />
@@ -191,7 +193,7 @@ export function getStaticPaths() {
   .element-Hydro {
     background: radial-gradient(
       circle at 50% -50%,
-      rgb(255, 255, 255, 0.4) 60%,
+      rgb(255, 255, 255) 60%,
       #3b82f6
     );
     /* [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)] */
@@ -200,42 +202,42 @@ export function getStaticPaths() {
   .element-Electro {
     background: radial-gradient(
       circle at 50% -140%,
-      rgb(255, 255, 255, 0.4) 70%,
+      rgb(255, 255, 255) 70%,
       #a855f7
     );
   }
   .element-Cryo {
     background: radial-gradient(
       circle at 50% -140%,
-      rgb(255, 255, 255, 0.4) 70%,
+      rgb(255, 255, 255) 70%,
       #06b6d4
     );
   }
   .element-Pyro {
     background: radial-gradient(
       circle at 50% -140%,
-      rgb(255, 255, 255, 0.4) 70%,
+      rgb(255, 255, 255) 70%,
       #ef4444
     );
   }
   .element-Anemo {
     background: radial-gradient(
       circle at 50% -140%,
-      rgb(255, 255, 255, 0.4) 70%,
+      rgb(255, 255, 255) 70%,
       #2dd4bf
     );
   }
   .element-Geo {
     background: radial-gradient(
       circle at 50% -140%,
-      rgb(255, 255, 255, 0.4) 70%,
+      rgb(255, 255, 255) 70%,
       #f59e0b
     );
   }
   .element-Dendro {
     background: radial-gradient(
       circle at 50% -140%,
-      rgb(255, 255, 255, 0.4) 70%,
+      rgb(255, 255, 255) 70%,
       #71d817
     );
   }
@@ -296,5 +298,4 @@ export function getStaticPaths() {
       #06b5d476
     );
   }
-  
 </style>

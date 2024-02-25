@@ -42,13 +42,10 @@ const theme = Astro.cookies.get("theme")?.value;
       
       @media (prefers-color-scheme: dark) {
         html{
-          background-color: black;
+          background: black;
         }
       }
-      html {
-        scrollbar-gutter: stable;
-        background-color: white;
-      }
+      
     </style>
     <script is:inline>
       // const cookies = document.cookie;

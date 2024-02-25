@@ -12,7 +12,7 @@ const { id, data } = Astro.props;
   <h2 class="text-2xl font-semibold capitalize dark:text-neutral-200">
     {id} Constellations
   </h2>
-  <div class="mt-5 grid grid-cols-2 gap-5">
+  <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-5">
     {
       data.constellations.map((constellation, index) => (
         <CardConstesllation

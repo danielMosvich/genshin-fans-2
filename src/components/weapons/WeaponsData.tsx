@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { WeaponProps } from "../../types/weapons";
 import "./WeaponsData.css"
-
+// 
 function WeaponsData({ data }: { data: WeaponProps[] }) {
   const [filtro, setFiltro] = useState({
     name: "",
@@ -32,7 +32,7 @@ function WeaponsData({ data }: { data: WeaponProps[] }) {
       </div>
 
       {/* MAIN CONTENT */}
-      <div className="w-full max-w-5xl mx-auto"
+      <div className="w-full max-w-5xl mx-auto flex flex-col gap-4"
       style={{minHeight:"calc(100vh - 56px)"}}>
         {/* <div className="rounded-lg flex flex-col justify-center items-center gap-5 w-full mt-5"> */}
           <section className="bg-white/80 dark:bg-neutral-950/70 dark:shadow-none backdrop-blur-md shadow-xl shadow-neutral-300/50 rounded-lg px-3 py-3 flex gap-5 items-center justify-between w-full mt-5">
@@ -53,7 +53,7 @@ function WeaponsData({ data }: { data: WeaponProps[] }) {
         {/* </div> */}
 
 
-        <div className="flex flex-wrap gap-8 my-8">
+        <div className="grid grid-characters justify-items-center gap-8 mt-5 w-full 2xl:px-4 px-10">
           {filteredWeapons.map((e, i) => {
             return (
               <div key={i} className="w-24 flex flex-col">
