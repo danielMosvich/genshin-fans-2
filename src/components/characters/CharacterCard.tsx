@@ -12,7 +12,7 @@ function CharacterCard({ item }: { item: CharactersProps }) {
   function encontrarCoincidencia(parametro: string, item?: CharactersProps) {
     if (item) {
       if (parametro === "traveler") {
-        let visionMinus = item.vision_key.toLocaleLowerCase()
+        let visionMinus = item.vision_key.toLocaleLowerCase();
         return `traveler-${visionMinus}`;
       }
     }
@@ -63,13 +63,17 @@ function CharacterCard({ item }: { item: CharactersProps }) {
             alt=""
           />
         </div>
-        <img
+        <div
           className={`w-7 h-7 absolute  p-1 rounded-full -top-2 -right-2 ${
             item.rarity === 5 ? "bg-amber-500" : "bg-purple-400"
           }`}
-          src={`https://genshin.jmp.blue/elements/${item.vision_key.toLocaleLowerCase()}/icon`}
-          alt=""
-        />
+        >
+          <img
+          className="w-full h-full"
+            src={`https://genshin.jmp.blue/elements/${item.vision_key.toLocaleLowerCase()}/icon`}
+            alt={item.vision_key}
+          />
+        </div>
       </a>
       <h2 className="text-center capitalize text-sm font-[500] whitespace-nowrap overflow-ellipsis overflow-hidden dark:text-white">
         {encontrarCoincidencia(obtenerSegundaPalabra(item.name))}
