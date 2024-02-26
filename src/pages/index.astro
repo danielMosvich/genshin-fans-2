@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Genshin impact fans">
-  <div class="absolute top-0 w-full h-screen overflow-hidden">
+  <div class="fixed top-0 w-full min-h-screen h-full overflow-hidden">
     <svg
       id="patternId"
       width="100%"
@@ -36,106 +36,112 @@ import Layout from "../layouts/Layout.astro";
         fill="url(#a)"></rect></svg
     >
   </div>
-
-  <div
-    style="min-height: calc(100vh - 56px) "
-    class="flex flex-col gap-14 px-5 lg:px-32 xl:px-0 md:px-0 md:max-w-2xl mx-auto lg:max-w-5xl pt-20 relative"
-  >
-    <div class="h-fit">
-      <div></div>
-      <h2
-        class="font-bold xl:text-8xl text-center text-nowrap sm:text-6xl text-4xl flex flex-col items-center dark:text-neutral-50"
-      >
-        Genshin Impact <p
-          class="bg-gradient-to-t from-[#3b82f6] to-[#38bdf8] bg-clip-text xl:text-8xl sm:text-6xl text-4xl text-transparent capitalize text-center xl:h-[120px] sm:h-[90px] h-[50px]"
+  <div class="py-10">
+    <div
+      style="min-height: calc(100vh - 56px) "
+      class="flex flex-col gap-14 px-5 lg:px-32 xl:px-0 md:px-0 md:max-w-2xl mx-auto lg:max-w-5xl pt-10 relative "
+    >
+      <div class="h-fit">
+        <div></div>
+        <h2
+          class="font-bold xl:text-8xl text-center text-nowrap sm:text-6xl text-4xl flex flex-col items-center dark:text-neutral-50"
         >
-          fans Page
+          Genshin Impact <p
+            class="bg-gradient-to-t from-[#3b82f6] to-[#38bdf8] bg-clip-text xl:text-8xl sm:text-6xl text-4xl text-transparent capitalize text-center xl:h-[120px] sm:h-[90px] h-[50px]"
+          >
+            fans Page
+          </p>
+        </h2>
+        <p
+          class="xl:text-xl sm:text-md sm:px-0 px-10 text-sm font-semibold text-neutral-700 max-w-lg text-center mx-auto xl:mt-5 dark:text-neutral-300"
+        >
+          Descubre los personajes y armas que Genshin impact trae para ti, con
+          el estilo que los caracteriza
         </p>
-      </h2>
-      <p
-        class="xl:text-xl sm:text-md sm:px-0 px-10 text-sm font-semibold text-neutral-700 max-w-lg text-center mx-auto xl:mt-5 dark:text-neutral-300"
-      >
-        Descubre los personajes y armas que Genshin impact trae para ti, con el
-        estilo que los caracteriza
-      </p>
-    </div>
+      </div>
 
-    <div class="grid md:grid-cols-2 gap-5 h-fit ">
-      <a
-        href="/characters"
-        class="p-2 border-2 border-neutral-100 rounded-xl bg-gradient-to-b from-neutral-50 to-white hover:border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all shadow-lg shadow-neutral-100
-        dark:border-neutral-700 dark:shadow-none dark:to-neutral-900 dark:from-neutral-900"
-      >
-        <div
-          class="w-full h-full rounded-xl flex flex-col overflow-hidden relative cursor-pointer sm:p-5 p-2 bg-white hover:bg-gradient-to-b hover:from-white hover:to-neutral-100/80
-          dark:bg-gradient-to-b dark:from-neutral-800 dark:to-neutral-900 dark:hover:from-neutral-800 dark:hover:to-neutral-950"
+      <div class="grid md:grid-cols-2 gap-5 h-fit">
+        <a
+          href="/characters"
+          class="p-2 border-2 border-neutral-100 rounded-xl bg-gradient-to-b from-neutral-50 to-white hover:border-gray-200 hover:shadow-lg hover:-translate-y-1 shadow-lg shadow-neutral-100
+          dark:border-neutral-700 dark:shadow-none dark:to-neutral-900 dark:from-neutral-900"
         >
-          <div class="relative text-blue-500">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-users w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] xl:w-[70px] xl:h-[70px]"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-                d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path><path
-                d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path><path
-                d="M16 3.13a4 4 0 0 1 0 7.75"></path><path
-                d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path></svg
-            >
-          </div>
-          <h2
-            class="font-semibold md:text-xl tracking-tight mt-2 dark:text-neutral-100"
+          <div
+            class="w-full h-full rounded-xl flex flex-col overflow-hidden relative cursor-pointer sm:p-5 p-2 bg-white hover:bg-gradient-to-b hover:from-white hover:to-neutral-100/80
+            dark:bg-gradient-to-b dark:from-neutral-800 dark:to-neutral-900 dark:hover:from-neutral-800 dark:hover:to-neutral-950"
           >
-            Characters Gallery
-          </h2>
-          <p class="w-full text-neutral-600 text-sm mt-2 dark:text-neutral-400">
-            Aquí encontrarás una guía detallada de los personajes, incluyendo
-            sus descripciones y habilidades, todo presentado de manera
-            simplificada para que puedas dominar tu juego favorito fácilmente.
-          </p>
-        </div></a
-      >
-      <a
-        href="/weapons"
-        class="p-2 border-2 border-neutral-100 rounded-xl bg-gradient-to-b from-neutral-50 to-white hover:border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all shadow-lg shadow-neutral-100
-        dark:border-neutral-700 dark:shadow-none dark:to-neutral-900 dark:from-neutral-900"
-      >
-        <div
-          class="w-full h-full rounded-xl flex flex-col overflow-hidden relative cursor-pointer sm:p-5 p-2 bg-white hover:bg-gradient-to-b hover:from-white hover:to-neutral-100/80
-          dark:bg-gradient-to-b dark:from-neutral-800 dark:to-neutral-900 dark:hover:from-neutral-800 dark:hover:to-neutral-950"
+            <div class="relative text-blue-500">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-users w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] xl:w-[70px] xl:h-[70px]"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                  d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path><path
+                  d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path><path
+                  d="M16 3.13a4 4 0 0 1 0 7.75"></path><path
+                  d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path></svg
+              >
+            </div>
+            <h2
+              class="font-semibold md:text-xl tracking-tight mt-2 dark:text-neutral-100"
+            >
+              Characters Gallery
+            </h2>
+            <p
+              class="w-full text-neutral-600 text-sm mt-2 dark:text-neutral-400"
+            >
+              Aquí encontrarás una guía detallada de los personajes, incluyendo
+              sus descripciones y habilidades, todo presentado de manera
+              simplificada para que puedas dominar tu juego favorito fácilmente.
+            </p>
+          </div></a
         >
-          <div class="relative text-blue-500">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-swords w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] xl:w-[70px] xl:h-[70px]"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-                d="M21 3v5l-11 9l-4 4l-3 -3l4 -4l9 -11z"></path><path
-                d="M5 13l6 6"></path><path
-                d="M14.32 17.32l3.68 3.68l3 -3l-3.365 -3.365"></path><path
-                d="M10 5.5l-2 -2.5h-5v5l3 2.5"></path></svg
-            >
-          </div>
-          <h2
-            class="font-semibold md:text-xl tracking-tight mt-2 dark:text-neutral-100"
+        <a
+          href="/weapons"
+          class="p-2 border-2 border-neutral-100 rounded-xl bg-gradient-to-b from-neutral-50 to-white hover:border-gray-200 hover:shadow-lg hover:-translate-y-1 shadow-lg shadow-neutral-100
+          dark:border-neutral-700 dark:shadow-none dark:to-neutral-900 dark:from-neutral-900"
+        >
+          <div
+            class="w-full h-full rounded-xl flex flex-col overflow-hidden relative cursor-pointer sm:p-5 p-2 bg-white hover:bg-gradient-to-b hover:from-white hover:to-neutral-100/80
+            dark:bg-gradient-to-b dark:from-neutral-800 dark:to-neutral-900 dark:hover:from-neutral-800 dark:hover:to-neutral-950"
           >
-            Weapons Gallery
-          </h2>
-          <p class="w-full text-neutral-600 text-sm mt-2 dark:text-neutral-400">
-            Encuentra una guía detallada de las armas de tus personajes
-            favoritos, con sus descripciones y daño
-          </p>
-        </div></a
-      >
+            <div class="relative text-blue-500">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-swords w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] xl:w-[70px] xl:h-[70px]"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                  d="M21 3v5l-11 9l-4 4l-3 -3l4 -4l9 -11z"></path><path
+                  d="M5 13l6 6"></path><path
+                  d="M14.32 17.32l3.68 3.68l3 -3l-3.365 -3.365"></path><path
+                  d="M10 5.5l-2 -2.5h-5v5l3 2.5"></path></svg
+              >
+            </div>
+            <h2
+              class="font-semibold md:text-xl tracking-tight mt-2 dark:text-neutral-100"
+            >
+              Weapons Gallery
+            </h2>
+            <p
+              class="w-full text-neutral-600 text-sm mt-2 dark:text-neutral-400"
+            >
+              Encuentra una guía detallada de las armas de tus personajes
+              favoritos, con sus descripciones y daño
+            </p>
+          </div></a
+        >
+      </div>
     </div>
   </div>
+  
 </Layout>

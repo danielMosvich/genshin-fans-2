@@ -6,7 +6,7 @@ const { id } = Astro.params;
 const data = (await getWeaponById(String(id))) as WeaponProps;
 ---
 
-<Layout title={`${id}`}>
+<Layout title={`${data.name}`}>
   <div
     class="dark:bg-neutral-950 fixed inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]
   dark:bg-[linear-gradient(to_right,#f0f0f012_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f015_1px,transparent_1px)]"
@@ -84,9 +84,9 @@ const data = (await getWeaponById(String(id))) as WeaponProps;
     </div>
 
     <div class="mt-5 bg-white/50 dark:bg-neutral-950/50 p-5 rounded-lg">
-        <h2 class="dark:text-neutral-100 text-lg">Material Asc : <b>{data.ascensionMaterial}</b></h2>
-        <h2 class="dark:text-neutral-100 text-lg">Pasive : <b>{data.passiveName}</b></h2>
-        <p class="dark:text-neutral-400 text-lg">{data.passiveDesc}</p>
+        <h2 class="dark:text-neutral-100 md:text-lg sm:text-base text-sm">Material Asc : <b>{data.ascensionMaterial}</b></h2>
+        <h2 class="dark:text-neutral-100 md:text-lg sm:text-base text-sm">Pasive : <b>{data.passiveName}</b></h2>
+        <p class="dark:text-neutral-400 md:text-lg sm:text-base text-sm">{data.passiveDesc}</p>
     </div>
   </section>
 </Layout>
