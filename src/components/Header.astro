@@ -6,6 +6,14 @@ const theme = Astro.cookies.get("theme")?.value;
 // const theme = 'light'
 ---
 
+<div
+  id="side-bar"
+  class="z-40 bg-black/80 backdrop-blur-md fixed w-full h-screen flex-col items-center justify-center gap-10 hidden"
+>
+  <NavButton link="/">Home</NavButton>
+  <NavButton link="/characters">Characters</NavButton>
+  <NavButton link="/weapons">Weapons</NavButton>
+</div>
 <header
   class="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl w-full fixed flex gap-10 justify-center z-40"
 >
@@ -70,8 +78,12 @@ const theme = Astro.cookies.get("theme")?.value;
           >
         </div>
       </div>
-      <button class="dark:text-white md:hidden">
+      <button
+        class="dark:text-white md:hidden z-[50] relative"
+        id="button-hamburger"
+      >
         <svg
+          id="open"
           xmlns="http://www.w3.org/2000/svg"
           width="2rem"
           height="2rem"
@@ -84,71 +96,114 @@ const theme = Astro.cookies.get("theme")?.value;
             stroke-width="2.5"
             d="M3 6h18M3 12h18M3 18h18"></path></svg
         >
+        <svg
+          id="close"
+          style="display: none;"
+          xmlns="http://www.w3.org/2000/svg"
+          width="2rem"
+          height="2rem"
+          viewBox="0 0 24 24"
+          ><path
+            fill="currentColor"
+            d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"
+          ></path></svg
+        >
       </button>
     </div>
   </div>
-  <script is:inline>
-    const buttonLight = document.querySelector("#button-light");
-    const buttonDark = document.querySelector("#button-dark");
-    function saveTheme(theme) {
-      // const cookie = document.cookie;
-      // // console.log(cookie)
-      // // if (!cookie) {
-        const d = new Date();
-        d.setTime(d.getTime() + 365 * 86400000);
-        document.cookie = `theme=${theme};expires=${d.toUTCString()};path=/`;
-      // }
+</header>
+<script is:inline>
+  const buttonHamburger = document.querySelector("#button-hamburger");
+
+  const open = document.querySelector("#open");
+  const close = document.querySelector("#close");
+
+  const sidebar = document.querySelector("#side-bar");
+  const buttonLight = document.querySelector("#button-light");
+  const buttonDark = document.querySelector("#button-dark");
+
+  function toggleHamburger() {
+    if (sidebar.classList.contains("active")) {
+      sidebar.classList.remove("active");
+
+      open.style.display = "flex";
+      close.style.display = "none";
+
+      document.documentElement.style.overflow = "visible";
+    } else {
+      // ACTIVE
+      sidebar.classList.add("active");
+
+      open.style.display = "none";
+      close.style.display = "flex";
+
+      document.documentElement.style.overflow = "hidden";
     }
-    function changeTheme(theme) {
-      if (theme === "dark") {
-        document.documentElement.classList.add(theme);
-        saveTheme(theme);
+  }
+  buttonHamburger.addEventListener("click", toggleHamburger);
+  function saveTheme(theme) {
+    // const cookie = document.cookie;
+    // // console.log(cookie)
+    // // if (!cookie) {
+    const d = new Date();
+    d.setTime(d.getTime() + 365 * 86400000);
+    document.cookie = `theme=${theme};expires=${d.toUTCString()};path=/`;
+    // }
+  }
+  function changeTheme(theme) {
+    if (theme === "dark") {
+      document.documentElement.classList.add(theme);
+      saveTheme(theme);
+      buttonDark?.classList.remove("hidden");
+      buttonLight?.classList.add("hidden");
+    } else if (theme === "light") {
+      document.documentElement.classList.remove("dark");
+      saveTheme(theme);
+      buttonDark?.classList.add("hidden");
+      buttonLight?.classList.remove("hidden");
+    } else if (theme === "system") {
+      if (
+        window.matchMedia &&
+        window.matchMedia(`(prefers-color-scheme:dark)`).matches
+      ) {
+        saveTheme("dark");
         buttonDark?.classList.remove("hidden");
         buttonLight?.classList.add("hidden");
-      } else if (theme === "light") {
-        document.documentElement.classList.remove("dark");
-        saveTheme(theme);
+      } else {
+        saveTheme("light");
         buttonDark?.classList.add("hidden");
         buttonLight?.classList.remove("hidden");
-      } else if (theme === "system") {
-        if (
-          window.matchMedia &&
-          window.matchMedia(`(prefers-color-scheme:dark)`).matches
-        ) {
-          saveTheme("dark");
-          buttonDark?.classList.remove("hidden");
-          buttonLight?.classList.add("hidden");
-        } else {
-          saveTheme("light");
-          buttonDark?.classList.add("hidden");
-          buttonLight?.classList.remove("hidden");
-        }
       }
     }
-    buttonLight?.addEventListener("click", () => {
-      changeTheme("dark");
-    });
-    buttonDark?.addEventListener("click", () => {
-      changeTheme("light");
-    });
-    window.addEventListener("DOMContentLoaded", () => {
-      const cookies = document.cookie;
+  }
+  buttonLight?.addEventListener("click", () => {
+    changeTheme("dark");
+  });
+  buttonDark?.addEventListener("click", () => {
+    changeTheme("light");
+  });
+  window.addEventListener("DOMContentLoaded", () => {
+    const cookies = document.cookie;
 
-      // console.log("XD?")
-      if (cookies) {
-        const match = cookies.match("theme=([^;]+)");
-        let theme = match[1];
-        changeTheme(theme);
+    // console.log("XD?")
+    if (cookies) {
+      const match = cookies.match("theme=([^;]+)");
+      let theme = match[1];
+      changeTheme(theme);
+    } else {
+      if (
+        window.matchMedia &&
+        window.matchMedia(`(prefers-color-scheme:dark)`).matches
+      ) {
+        changeTheme("dark");
       } else {
-        if (
-          window.matchMedia &&
-          window.matchMedia(`(prefers-color-scheme:dark)`).matches
-        ) {
-          changeTheme("dark");
-        } else {
-          changeTheme("light");
-        }
+        changeTheme("light");
       }
-    });
-  </script>
-</header>
+    }
+  });
+</script>
+<style>
+  .active {
+    display: flex;
+  }
+</style>

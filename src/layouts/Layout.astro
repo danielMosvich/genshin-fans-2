@@ -39,6 +39,13 @@ const theme = Astro.cookies.get("theme")?.value;
           white 60%
         );
       }
+      html{
+        scrollbar-gutter: stable;
+        /* scrollbar-gutter: stable both-edges; */
+      }
+      body{
+        /* scrollbar-gutter: stable both-edges; */
+      }
       
       @media (prefers-color-scheme: dark) {
         html{
