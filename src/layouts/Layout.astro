@@ -20,10 +20,13 @@ const theme = Astro.cookies.get("theme")?.value;
       content="Genshin Impact characters and weapons list"
     />
     <meta name="copyright" content="ISC" />
+    <meta property="og:title" content="/poster.png" />
     <meta
-      property="og:title"
-      content="https://res.cloudinary.com/dnr4oeapp/image/upload/v1716316979/gif.png"
+      name="twitter:image:src"
+      content="/poster.png"
     />
+    <meta name="twitter:card" content="summary_large_image" />
+
     <meta
       property="og:image:alt"
       content="view of the characters and weaponss in Genshin Impact"
