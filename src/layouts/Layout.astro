@@ -13,12 +13,24 @@ const theme = Astro.cookies.get("theme")?.value;
 <html lang="en" class={theme === "dark" ? "dark" : "light"}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta
+      name="description"
+      content="Genshin Impact characters and weapons list"
+    />
+    <meta name="copyright" content="ISC" />
+    <meta
+      property="og:title"
+      content="https://res.cloudinary.com/dnr4oeapp/image/upload/v1716316979/gif.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="view of the characters and weaponss in Genshin Impact"
+    />
+    <meta name="author" content="daniray" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <!-- <ViewTransitions /> -->
   </head>
   <body>
     <Header />
@@ -39,20 +51,19 @@ const theme = Astro.cookies.get("theme")?.value;
           white 60%
         );
       }
-      html{
+      html {
         scrollbar-gutter: stable;
         /* scrollbar-gutter: stable both-edges; */
       }
-      body{
+      body {
         /* scrollbar-gutter: stable both-edges; */
       }
-      
+
       @media (prefers-color-scheme: dark) {
-        html{
+        html {
           background: black;
         }
       }
-      
     </style>
     <script is:inline>
       // const cookies = document.cookie;
